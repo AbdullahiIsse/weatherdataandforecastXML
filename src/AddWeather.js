@@ -15,16 +15,21 @@ function App() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Make the POST request here
         const response = await postData([formData]);
-
         if (response) {
             console.log('POST request successful:', response);
-            // You can add code here to handle a successful response
+            setFormData( {
+                type: "",
+                time: "",
+                place: "",
+                value: "",
+                unit: "",
+                precipitation_type: "",
+                direction: "",
+            })
+
         } else {
             console.log('POST request failed.');
-            // You can add code here to handle a failed request
         }
     };
 
