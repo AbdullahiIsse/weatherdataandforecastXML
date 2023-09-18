@@ -225,5 +225,29 @@ export async function getWeatherForecastData(place) {
     }
 }
 
+export async function postData(data) {
+    const url = 'http://localhost:8080/data';
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+
+    try {
+        const response = await fetch(url, options);
+        if (response.ok) {
+            const responseData = await response.json();
+            return responseData; // If the server responds with JSON data, you can parse and return it.
+        } else {
+            console.error('Request failed with status:', response.status);
+            return null;
+        }
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
 
 
