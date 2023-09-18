@@ -1,4 +1,5 @@
 import createWeatherData from "../Models/WeatherData";
+import createWeatherForecast from "../Models/WeatherForecast";
 
 export async function getWeatherData(place) {
     const url = `http://localhost:8080/data/${place}`;
@@ -212,7 +213,7 @@ export async function getWeatherForecastData(place) {
             const data = await response.json();
             return data.map((dataItem) => {
 
-                return createWeatherData(dataItem.time, dataItem.place, dataItem.value, dataItem.type, dataItem.unit);
+                return createWeatherForecast(dataItem.time, dataItem.place, dataItem.from, dataItem.to, dataItem.unit, dataItem.type);
             });
         } else {
             console.error('Request failed with status:', response.status);

@@ -4,7 +4,7 @@ import {
     getMaxTemperature,
     getMinTemperature,
     getTotalPrecipitation,
-    getWeatherData
+    getWeatherData, getWeatherForecastData
 } from "./Service/Service";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -16,6 +16,7 @@ function App() {
     ];
 
     const [data, setData] = useState([]);
+    const [data2, setData2] = useState([]);
     const [selectedOption, setSelectedOption] = useState(options[0]);
     const [maxTemperature, setMaxTemperature] = useState(null);
     const [minTemperature, setMinTemperature] = useState(null);
@@ -30,6 +31,11 @@ function App() {
             console.log(weatherData);
         }
 
+        async function fetchData2() {
+            const weatherForecast = await getWeatherForecastData(selectedOption);
+            setData2(weatherForecast);
+            console.log(weatherForecast);
+        }
         async function fetchMaxTemperature() {
             const maxTemperature = await getMaxTemperature(selectedOption);
             setMaxTemperature(maxTemperature);
@@ -54,6 +60,7 @@ function App() {
         }
 
         fetchData();
+        fetchData2();
         fetchMaxTemperature();
         fetchMinTemperature();
         fetchAverageWindSpeed();
@@ -90,6 +97,7 @@ function App() {
                 </div>
                 <div className="flex-container">
                 <div className="table-container">
+                    <h3>Weather Data</h3>
                     <table>
                         <thead>
                         <tr>
@@ -114,6 +122,7 @@ function App() {
                     </table>
                 </div>
                     <div className="table-container2">
+                        <h3>Weather Forecast</h3>
                         <table>
                             <thead>
                             <tr>
@@ -122,16 +131,18 @@ function App() {
                                 <th>From</th>
                                 <th>To</th>
                                 <th>Unit</th>
+                                <th>Type</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {data.map((dataItem, index) => (
+                            {data2.map((dataItem, index) => (
                                 <tr key={index}>
                                     <td>{dataItem.place}</td>
                                     <td>{dataItem.time}</td>
-                                    <td>{dataItem.value}</td>
-                                    <td>{dataItem.type}</td>
+                                    <td>{dataItem.from}</td>
+                                    <td>{dataItem.to}</td>
                                     <td>{dataItem.unit}</td>
+                                    <td>{dataItem.type}</td>
                                 </tr>
                             ))}
                             </tbody>
