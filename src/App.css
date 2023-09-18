@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+    text-align: left;
+    margin-left: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.max-temperature-container {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.min-temperature-container {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.average-wind-speed-container{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.total-precipitation-container{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Dropdown-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.Dropdown-root {
+    width: 150px;
+}
+
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.table-container,
+.table-container2 {
+    flex: 0 0 calc(50% - 20px); /* Adjust width as needed */
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+.table-container table,
+.table-container2 table {
+    width: 100%;
+}
+
+.table-container th,
+.table-container td,
+.table-container2 th,
+.table-container2 td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.table-container th,
+.table-container2 th {
+    background-color: #f2f2f2;
 }
